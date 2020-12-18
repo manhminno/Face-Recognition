@@ -8,7 +8,7 @@ from mtcnn import MTCNN
 from sklearn.preprocessing import LabelBinarizer
 from src.utils import *
 
-os.environ["CUDA_VISIBLE_DEVICES"] = "0"
+# os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
 
 #read detector
 detector = MTCNN()
