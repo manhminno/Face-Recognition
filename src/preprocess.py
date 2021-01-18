@@ -9,13 +9,13 @@ os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 detector = MTCNN()
 
 def move_dir():
-    dir = glob.glob("./data/class_data/*")    
+    dir = glob.glob("./data2/class_data/*")    
     count = 0
 
     for img in dir:
         count += 1
         student = img.split('\\')[-1].split("_")[0]
-        new_dir = "./data/" + student + "/"
+        new_dir = "./data22/" + student + "/"
         if(count == 1):
             if not os.path.exists(new_dir):
                 os.makedirs(new_dir)
@@ -24,7 +24,9 @@ def move_dir():
         if(count == 5):
             count = 0
 
-data = glob.glob("./data/*")
+move_dir()
+
+data = glob.glob("./data22/*")
 for dir in data:
     # print(dir)
     img = glob.glob(dir + "/*")
