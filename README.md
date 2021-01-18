@@ -96,6 +96,6 @@ python stream_recognition.py
 - <strong><a href="https://github.com/deepinsight/insightface">Insightface</a></strong>
 - <strong><a href="https://github.com/davidsandberg/facenet">Facenet</a></strong>
 - <strong><a href="https://github.com/timesler/facenet-pytorch/blob/master/models/mtcnn.py">MTCNN</a></strong>
-
+- Facenet-keras model (trained by MS-Celeb-1M dataset): <strong><a href="https://drive.google.com/drive/folders/1pwQ3H4aJ8a6yyJHZkTwtjcL4wYWQb7bn">Download</a></strong>
 
 
