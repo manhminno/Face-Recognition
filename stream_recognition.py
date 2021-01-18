@@ -31,7 +31,7 @@ lb = LabelBinarizer()
 labels = lb.fit_transform(dict_embs["labels"])
 
 #threshold
-softmax_thresh = 0.9
+softmax_thresh = 0.96
 cosine_thresh = 0.8
 
 #load webcam
@@ -62,11 +62,11 @@ while 1:
                 preds = classify_model.predict(embed)
                 preds = preds.flatten()
                 pred, prob = get_label_classify(preds, lb)
-                print("Softmax method: Prob: {} Label predict: {}".format(prob, pred))
+                print("Softmax method: Prob: {:.3f} Label predict: {}".format(prob, pred))
 
                 label_cos, prob_cos = most_similarity(np.concatenate(dict_embs["embs"]), embed, dict_embs["labels"])
-                print("Cosine method: Prob: {} Label predict: {}".format(str(prob_cos[0]), label_cos))
-                print("-------------------")
+                print("Cosine method: Prob: {:.3f} Label predict: {}".format(prob_cos, label_cos))
+                print("--------------------")
 
                 #show result if 2 method have same predict
                 if(prob > softmax_thresh and pred == label_cos and prob_cos > cosine_thresh):
@@ -89,7 +89,7 @@ while 1:
                 else:
                     continue
             except:
-                print("Box error!\n")
+                print("Error!\n")
             
     img = cv2.cvtColor(img, cv2.COLOR_RGB2BGR)
     cv2.imshow('Webcam',img)
