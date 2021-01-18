@@ -29,7 +29,7 @@ lb = LabelBinarizer()
 labels = lb.fit_transform(dict_embs["labels"])
 
 # #Read detector
-img_test = cv2.imread('../newtrain/manhnv/manhnv_10.jpg') #path to img to test
+img_test = cv2.imread('./newdata/unknow/10.jpg') #path to img to test
 # img_test = cv2.cvtColor(img_test, cv2.COLOR_BGR2RGB)
 
 img_test = cv2.resize(img_test, (160, 160))
@@ -52,7 +52,7 @@ print("Label predict: ", lb.classes_[j])
 #predict with cosine distance
 label, prob = most_similarity(np.concatenate(dict_embs["embs"]), embed, dict_embs["labels"])
 print("\nCos method:")
-print("Prob: ", str(prob[0]))
+print("Prob: ", prob)
 print("Label predict: ", label)
 
 
