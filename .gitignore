@@ -3,3 +3,7 @@ src/__pycache__
 newdata/
 newtrain/
 aug_data/
+showbiz_raw/
+showbiz_preprocess/
+aug_data_backup/
+video/
