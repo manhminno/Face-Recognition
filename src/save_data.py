@@ -50,7 +50,7 @@ while 1:
         break
     if(img2 is not None):
         count_frame += 1
-        if(count_frame%4 == 0):
+        if(count_frame%2 == 0):
             save_img = path_to_save + args.name + "_" + str(count_img) + ".jpg"
             print("Image saved at: ", save_img)
             cv2.imwrite(save_img, img2)   #Write data
