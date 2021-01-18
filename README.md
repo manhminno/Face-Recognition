@@ -70,7 +70,9 @@ python train_classify.py
 ```
 > *The number of classes i'm setting here is 37 classes, so change the number of classes that match your dataset*
 #### Enjoy result:
-<p align="center"> <img src="https://github.com/manhminno/Face-Recognition/blob/master/output/1.jpg"></p>
+<a href="https://github.com/manhminno/Face-Recognition/blob/master/output/1.jpg">
+      <img alt="Qries" src="https://github.com/manhminno/Face-Recognition/blob/master/output/1.jpg">
+</a>
 
 *Label is name of saved-dir - box is green, unknow will don't have label - box is red. Here label is id of person.*
 - For image recognition:
