@@ -21,11 +21,11 @@ class SoftMax():
         model = Sequential()
         model.add(Dense(1024, activation='relu', input_shape=self.input_shape))
         model.add(Dropout(0.5))
-        model.add(Dense(1024, activation='relu'))
+        model.add(Dense(512, activation='relu'))
         model.add(Dropout(0.5))
         model.add(Dense(self.num_classes, activation='softmax'))
 
-        optimizer = Adam(lr=0.001, beta_1=0.9, beta_2=0.999, epsilon=None, decay=0.0, amsgrad=False)
+        optimizer = Adam(lr=0.001, beta_1=0.9, beta_2=0.999)
         model.compile(loss=keras.losses.categorical_crossentropy, optimizer=optimizer, metrics=['accuracy'])
 
         return model
@@ -52,9 +52,9 @@ history = {'acc': [], 'val_acc': [], 'loss': [], 'val_loss': []}
 for train_idx, valid_idx in cv.split(embeddings):
     X_train, X_val, y_train, y_val = embeddings[train_idx], embeddings[valid_idx], labels[train_idx], labels[valid_idx]
     his = model.fit(X_train, y_train, batch_size=16, epochs=10, verbose=1, validation_data=(X_val, y_val))
-    print(his.history['acc'])
-    history['acc'] += his.history['acc']
-    history['val_acc'] += his.history['val_acc']
+    print(his.history['accuracy'])
+    history['acc'] += his.history['accuracy']
+    history['val_acc'] += his.history['val_accuracy']
     history['loss'] += his.history['loss']
     history['val_loss'] += his.history['val_loss']
 
