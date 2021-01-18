@@ -1,2 +1,5 @@
 data/
 src/__pycache__
+newdata/
+newtrain/
+aug_data/

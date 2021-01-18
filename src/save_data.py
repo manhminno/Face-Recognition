@@ -20,7 +20,7 @@ cap = cv2.VideoCapture(0)
 img2 = None
 count_frame = 0
 count_img = 0
-path_to_save = './newtrain/'
+path_to_save = '../newdata/'
 path_to_save = path_to_save + args.name + '/'
 if not os.path.exists(path_to_save):
     os.makedirs(path_to_save)
@@ -36,9 +36,12 @@ while 1:
             bbox = np.array([bbox[0], bbox[1], bbox[0]+bbox[2], bbox[1]+bbox[3]])            
             
             #Box
-            img2 = img[bbox[1]-40:bbox[3]+13, bbox[0]-15:bbox[2]+25]
-            cv2.rectangle(img, (bbox[0]-20, bbox[1]-50), (bbox[2]+30, bbox[3]+15), (255,0,0), 2)
-            img2 = cv2.cvtColor(img2, cv2.COLOR_RGB2BGR)
+            try:
+                img2 = img[bbox[1]-40:bbox[3]+13, bbox[0]-15:bbox[2]+25]
+                cv2.rectangle(img, (bbox[0]-20, bbox[1]-50), (bbox[2]+30, bbox[3]+15), (255,0,0), 2)
+                img2 = cv2.cvtColor(img2, cv2.COLOR_RGB2BGR)
+            except:
+                print("Cut image have an error!")
 
     img = cv2.cvtColor(img, cv2.COLOR_RGB2BGR)
     cv2.imshow('Webcam',img)
@@ -50,14 +53,14 @@ while 1:
         if(count_frame%4 == 0):
             save_img = path_to_save + args.name + "_" + str(count_img) + ".jpg"
             print("Image saved at: ", save_img)
-            # cv2.imwrite(save_img, img2)   #Write data
+            cv2.imwrite(save_img, img2)   #Write data
 
             cv2.imshow('Image', img2)
             k = cv2.waitKey(24) & 0xff
             if k == ord('q'):
                 break
             count_img += 1
-            if(count_img == 20):
+            if(count_img == 100):
                 break
 
 cap.release()
