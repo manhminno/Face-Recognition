@@ -1,6 +1,6 @@
 import numpy as np
 from sklearn.metrics.pairwise import cosine_similarity
-
+from collections import Counter
 #Pre-process img
 def prewhiten(x):
     if x.ndim == 4:
@@ -37,9 +37,12 @@ def calc_embs(model, imgs, batch_size):
 def most_similarity(embed_vecs, vec, labels):
     sim = cosine_similarity(embed_vecs, vec)
     sim = np.squeeze(sim, axis = 1)
-    argmax = np.argsort(sim)[::-1][:1]
-    label = [labels[idx] for idx in argmax][0]
-    return label, sim[argmax]
+    argmax = np.argsort(sim)[::-1][:10]
+    label = [labels[idx] for idx in argmax]
+    name = Counter(label)
+    tmp_sum = sum(sorted(sim, reverse=True)[0:10])
+    prob = tmp_sum/10
+    return name.most_common(1)[0][0], prob
 
 #get label from classify network
 def get_label_classify(preds, lb):
