@@ -13,7 +13,7 @@ os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 model_path = './models/facenet_keras.h5'
 model = load_model(model_path)
 
-train_path = './data/'
+train_path = './aug_data/'
 dir = glob(train_path + '*' )
 
 #init
@@ -50,4 +50,5 @@ f = open("./output/train_embs.pickle", "wb")
 f.write(pickle.dumps(dict))
 f.close()
 
+print("{} people are embedded!".format(len(embs)))
 print("Embedding done!")
