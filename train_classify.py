@@ -30,8 +30,8 @@ class SoftMax():
 
         return model
 
-#Model output: 128-D, classes = 37
-model = SoftMax(input_shape=(128,), num_classes=37)
+#Model output: 128-D, classes = 38
+model = SoftMax(input_shape=(128,), num_classes=38)
 model = model.build()
 # model.summary()
 

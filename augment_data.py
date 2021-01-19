@@ -29,7 +29,7 @@ class_dictionary = img.class_indices
 count = 0
 batch = next(img)
 while(batch):
-    if(count > 3699):
+    if(count > 3799):
         break
     for i in range(len(batch[0])):
         image = batch[0][i]

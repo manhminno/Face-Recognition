@@ -22,7 +22,7 @@ args = ap.parse_args()
 
 #threshold
 softmax_thresh = 0.96
-cosine_thresh = 0.8
+cosine_thresh = 0.80
 
 #load images to predict
 img_test = cv2.imread(args.path)
@@ -65,10 +65,11 @@ if(args.facedetect == "yes"):
 
             try:
                 img2 = cv2.resize(img2, (160, 160))
-                img2 = prewhiten(img2)
                 img2 = img2[np.newaxis]
-                embed = face_model.predict_on_batch(img2)         
-                
+                # embed = face_model.predict_on_batch(img2)         
+                embed = calc_embs(face_model, img2, 1)
+                # print(embed)
+
                 preds = classify_model.predict(embed)
                 preds = preds.flatten()
                 pred, prob = get_label_classify(preds, lb)
@@ -115,7 +116,8 @@ else:
     #preprocess img and embedding
     img_test = prewhiten(img_test)
     img_test = img_test[np.newaxis]
-    embed = face_model.predict_on_batch(img_test)
+    # embed = face_model.predict_on_batch(img_test)
+    embed = calc_embs(face_model, img_test, 1)
 
     #predict with softmax model
     preds = classify_model.predict(embed)

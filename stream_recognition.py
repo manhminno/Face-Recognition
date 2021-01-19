@@ -9,6 +9,7 @@ from sklearn.preprocessing import LabelBinarizer
 from src.utils import *
 
 # os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
+os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 
 #read detector
 detector = MTCNN()
@@ -55,9 +56,9 @@ while 1:
 
             try:
                 img2 = cv2.resize(img2, (160, 160))
-                img2 = prewhiten(img2)
                 img2 = img2[np.newaxis]
-                embed = face_model.predict_on_batch(img2)         
+                # embed = face_model.predict_on_batch(img2)   
+                embed = calc_embs(face_model, img2, 1)      
                 
                 preds = classify_model.predict(embed)
                 preds = preds.flatten()
