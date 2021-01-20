@@ -11,7 +11,7 @@
 - Face recognition is a technology capable of matching a human face from a digital image or a video frame against a database of faces, typically employed to authenticate users through ID verification services, works by pinpointing and measuring facial features from a given image.
 - Recognize and manipulate faces with Python and its support libraries.
 The project uses MTCNN for detecting faces, then applies a simple alignment for each detected face and feeds those aligned faces into embeddings model (Facenet).
-Finally, a softmax classifier was put on top of embedded vectors for classification task.
+Finally, a softmax classifier and cosine similarity method was put on top of embedded vectors for classification task.
 
 <a name="requirement"/>
 
@@ -74,7 +74,7 @@ python train_classify.py
       <img alt="Qries" src="https://github.com/manhminno/Face-Recognition/blob/master/output/1.jpg">
 </a>
 
-*Label is name of saved-dir - box is green, unknow will don't have label - box is red. Here label is id of person.*
+*Label is name of saved-dir - box is green, unknown will don't have label - box is red. Here label is id of person.*
 - For image recognition:
 ```
 python image_recognition.py --path (path to image) --facedetect (use MTCNN to detect face before recognition - yes/no)
